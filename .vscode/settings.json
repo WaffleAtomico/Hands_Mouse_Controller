@@ -1,4 +1,31 @@
 {
     "python-envs.defaultEnvManager": "ms-python.python:venv",
-    "python-envs.defaultPackageManager": "ms-python.python:pip"
+    "python-envs.defaultPackageManager": "ms-python.python:pip",
+    "ruff.lint.select": [
+        "E",
+        "W",
+        "D",
+        "PL",
+        "BLE",
+        "F",
+        "I"
+    ],
+    "ruff.exclude": [
+        ".venv*",
+        "build",
+        "dist",
+        "*.egg-info"
+    ],
+    "ruff.configuration": {
+        "format": {
+            "quote-style": "double"
+        },
+        "lint": {
+            "pydocstyle": {
+                "convention": "numpy"
+            }
+        }
+    },
+    "ruff.lineLength": 100,
+    "ruff.lint.preview": true
 }

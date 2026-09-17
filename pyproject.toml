@@ -13,6 +13,7 @@ dependencies = [
     "numpy>=2.4.6",
     "opencv-python>=5.0.0.93",
     "pyautogui>=0.9.54",
+    "ruff>=0.16.8",
     "sounddevice>=0.5.6",
 ]
 
@@ -22,3 +23,18 @@ opencvcursorproy = "opencvcursorproy:main"
 [build-system]
 requires = ["uv_build>=0.12.10,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+exclude = [".venv", "dist", "egg-info", "build"]
+
+[tool.ruff.lint]
+select = ["E", "W", "D", "PL", "BLE", "F", "I", "ARG001","PLR2044", "RET504", "SIM103", "UP032"]
+preview = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "space"

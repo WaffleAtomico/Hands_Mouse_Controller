@@ -1,0 +1,12 @@
+too-many-locals: Too many local variables (21 > 15)
+   --> src/opencvcursorproy/HandGestureRecognition.py:103:9
+    |
+101 |         cv2.destroyAllWindows()
+102 |
+103 |     def main(self):
+    |         ^^^^
+104 |         """
+105 |         OpenCamera and uses cursor.
+    |
+
+Found 1 error.

@@ -5,7 +5,8 @@ build/
 dist/
 wheels/
 *.egg-info
+.vscode
+.ruff_cache
 
 # Virtual environments
 .venv
-.vscode

@@ -1,0 +1,264 @@
+undocumented-public-module: Missing docstring in public module
+--> src/opencvcursorproy/Actions.py:1:1
+
+undocumented-public-class: Missing docstring in public class
+  --> src/opencvcursorproy/Actions.py:12:7
+   |
+12 | class ActionsBase(ABC):
+   |       ^^^^^^^^^^^
+13 |     def __init__(self):
+14 |         pass
+   |
+
+undocumented-public-class: Missing docstring in public class
+  --> src/opencvcursorproy/Actions.py:26:7
+   |
+26 | class ClickActions(ActionsBase):
+   |       ^^^^^^^^^^^^
+27 |     def __init__(self):
+28 |         self.fingers_raised = {}
+   |
+
+undocumented-public-method: Missing docstring in public method
+  --> src/opencvcursorproy/Actions.py:96:9
+   |
+94 |             writer.write_text()
+95 |
+96 |     def update_fingers(self, fingers_raised):
+   |         ^^^^^^^^^^^^^^
+97 |         self.fingers_raised = fingers_raised
+   |
+
+undocumented-public-method: Missing docstring in public method
+   --> src/opencvcursorproy/Actions.py:99:9
+    |
+ 97 |         self.fingers_raised = fingers_raised
+ 98 |
+ 99 |     def execute_actions(self, cursor_position):
+    |         ^^^^^^^^^^^^^^^
+100 |         self._move_cursor(cursor_position)
+101 |         self._left_click()
+    |
+
+undocumented-public-class: Missing docstring in public class
+   --> src/opencvcursorproy/Actions.py:107:7
+    |
+107 | class ScrollAction(ClickActions):
+    |       ^^^^^^^^^^^^
+108 |     def __init__(self):
+109 |         super().__init__()
+    |
+
+undocumented-public-method: Missing docstring in public method
+   --> src/opencvcursorproy/Actions.py:113:9
+    |
+111 |         self._was_dragging = False
+112 |
+113 |     def update_landmarks(self, hand_landmarks, was_dragging=False):
+    |         ^^^^^^^^^^^^^^^^
+114 |         self.hand_landmarks = hand_landmarks
+115 |         self._was_dragging = was_dragging
+    |
+
+undocumented-public-method: Missing docstring in public method
+   --> src/opencvcursorproy/Actions.py:141:9
+    |
+139 |             pyautogui.scroll(scroll_amount * -1)
+140 |
+141 |     def execute_actions(self):
+    |         ^^^^^^^^^^^^^^^
+142 |         self._scroll()
+    |
+
+undocumented-public-class: Missing docstring in public class
+   --> src/opencvcursorproy/Actions.py:145:7
+    |
+145 | class AdvancedActions(ActionsBase):
+    |       ^^^^^^^^^^^^^^^
+146 |     def __init__(self):
+147 |         self.hand_landmarks = None
+    |
+
+undocumented-public-method: Missing docstring in public method
+   --> src/opencvcursorproy/Actions.py:151:9
+    |
+149 |         self.position_history = deque(maxlen=4)
+150 |
+151 |     def update_landmarks(self, hand_landmarks):
+    |         ^^^^^^^^^^^^^^^^
+152 |         self.hand_landmarks = hand_landmarks
+153 |         return self._was_dragging
+    |
+
+undocumented-public-method: Missing docstring in public method
+   --> src/opencvcursorproy/Actions.py:155:9
+    |
+153 |         return self._was_dragging
+154 |
+155 |     def reset_drag_state(self):
+    |         ^^^^^^^^^^^^^^^^
+156 |         if self._was_dragging:
+157 |             pyautogui.mouseUp(button='left')
+    |
+
+magic-value-comparison: Magic value used in comparison, consider replacing `0.045` with a constant variable
+   --> src/opencvcursorproy/Actions.py:176:50
+    |
+175 |         # Histéresis: Activación estricta (< 0.045), Soltado con margen (> 0.06)
+176 |         if not self._was_dragging and distance < 0.045:
+    |                                                  ^^^^^
+177 |             pyautogui.mouseDown(button='left', x=avg_x, y=avg_y)
+178 |             self._was_dragging = True
+    |
+
+magic-value-comparison: Magic value used in comparison, consider replacing `0.06` with a constant variable
+   --> src/opencvcursorproy/Actions.py:179:48
+    |
+177 |             pyautogui.mouseDown(button='left', x=avg_x, y=avg_y)
+178 |             self._was_dragging = True
+179 |         elif self._was_dragging and distance > 0.06:
+    |                                                ^^^^
+180 |             pyautogui.mouseUp(button='left', x=avg_x, y=avg_y)
+181 |             self._was_dragging = False
+    |
+
+undocumented-public-method: Missing docstring in public method
+   --> src/opencvcursorproy/Actions.py:186:9
+    |
+184 |             pyautogui.moveTo(avg_x, avg_y)
+185 |
+186 |     def execute_actions(self, cursor_position):
+    |         ^^^^^^^^^^^^^^^
+187 |         self._drag(cursor_position)
+    |
+
+undocumented-public-class: Missing docstring in public class
+   --> src/opencvcursorproy/Actions.py:190:7
+    |
+190 | class ActivateGesture(ActionsBase):
+    |       ^^^^^^^^^^^^^^^
+191 |     def __init__(self, required_seconds=2, fps=30):
+192 |         self.is_active = True
+    |
+
+undocumented-public-method: Missing docstring in public method
+   --> src/opencvcursorproy/Actions.py:198:9
+    |
+196 |         self.cooldown = 0
+197 |
+198 |     def update_fingers(self, fingers_raised):
+    |         ^^^^^^^^^^^^^^
+199 |         self.fingers_raised = fingers_raised
+    |
+
+undocumented-public-method: Missing docstring in public method
+   --> src/opencvcursorproy/Actions.py:231:9
+    |
+229 |         return self.is_active
+230 |
+231 |     def execute_actions(self):
+    |         ^^^^^^^^^^^^^^^
+232 |         return self._check_toggle()
+    |
+
+undocumented-public-class: Missing docstring in public class
+  --> src/opencvcursorproy/HandGestureRecognition.py:26:7
+   |
+26 | class HandGestureRecognition:
+   |       ^^^^^^^^^^^^^^^^^^^^^^
+27 |     def __init__(self):
+28 |         self._full_hand_model = ''
+   |
+
+undocumented-public-method: Missing docstring in public method
+  --> src/opencvcursorproy/HandGestureRecognition.py:44:9
+   |
+42 |         self.off_on_ctl = None
+43 |
+44 |     def build(self):
+   |         ^^^^^
+45 |         current_dir = Path(__file__).resolve().parent
+46 |         model_path_landmark = current_dir / 'models' / 'hand_landmarker.task'
+   |
+
+too-many-locals: Too many local variables (21 > 15)
+  --> src/opencvcursorproy/HandGestureRecognition.py:82:9
+   |
+80 |         cv2.destroyAllWindows()
+81 |
+82 |     def main(self):
+   |         ^^^^
+83 |         """
+84 |         OpenCamera and uses cursor.
+   |
+
+no-self-use: Method `_get_raised_fingers` could be a function, class method, or static method
+   --> src/opencvcursorproy/HandGestureRecognition.py:157:9
+    |
+155 |         self._destroy()
+156 |
+157 |     def _get_raised_fingers(self, hand_landmarks, handedness_name):
+    |         ^^^^^^^^^^^^^^^^^^^
+158 |         """
+159 |         Count fingers that are raised.
+    |
+help: Consider adding `@typing.override` if this method overrides a method from a superclass
+
+undocumented-public-module: Missing docstring in public module
+--> src/opencvcursorproy/Writer.py:1:1
+
+undocumented-public-class: Missing docstring in public class
+  --> src/opencvcursorproy/Writer.py:10:7
+   |
+10 | class Writer:
+   |       ^^^^^^
+11 |     def __init__(self):
+12 |         self.voice2text = Voice2Text()
+   |
+
+undocumented-public-method: Missing docstring in public method
+  --> src/opencvcursorproy/Writer.py:14:9
+   |
+12 |         self.voice2text = Voice2Text()
+13 |
+14 |     def write_text(self):
+   |         ^^^^^^^^^^
+15 |         txt = self.voice2text.speak_text()
+16 |         for char in txt:
+   |
+
+undocumented-public-package: Missing docstring in public package
+--> src/opencvcursorproy/__init__.py:1:1
+
+undocumented-public-function: Missing docstring in public function
+ --> src/opencvcursorproy/__init__.py:1:5
+  |
+1 | def main() -> None:
+  |     ^^^^
+2 |     print('Hello from opencvcursorproy!')
+  |
+
+undocumented-public-module: Missing docstring in public module
+--> src/opencvcursorproy/voice2text_tool/Voice2Text.py:1:1
+
+undocumented-public-class: Missing docstring in public class
+ --> src/opencvcursorproy/voice2text_tool/Voice2Text.py:5:7
+  |
+5 | class Voice2Text:
+  |       ^^^^^^^^^^
+6 |     def __init__(self):
+7 |         self.model_size = 'tiny'
+  |
+
+undocumented-public-method: Missing docstring in public method
+  --> src/opencvcursorproy/voice2text_tool/Voice2Text.py:10:9
+   |
+ 8 |         self.model = WhisperModel(self.model_size, device='cpu', compute_type='int8')
+ 9 |
+10 |     def speak_text(self, duration=4):
+   |         ^^^^^^^^^^
+11 |         samplerate = 16000
+12 |         print('Escuchando...')
+   |
+
+Found 29 errors.
